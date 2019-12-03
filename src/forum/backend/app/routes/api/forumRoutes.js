@@ -2,21 +2,20 @@ const express = require('express');
 const router = express.Router();
 // const auth = require('../../middleware/auth');
 
-
 let Post = require('../../models/forumPost.model');
 
-// @route   GET api/forumPosts
+// @route   GET api/forum
 // @desc    Get All Posts
 // @access  Public
 router.get('/', (req, res) => {
     Post.find()
       .sort({ date: -1 })
-      .then(items => res.json(items));
-  });
+      .then(posts => res.json(posts));
+});
 
-// @route   POST api/items
+// @route   POST api/forum
 // @desc    Create An Item
-// @access  Private
+// @access  Public
 router.post('/', (req, res) => {
     
     // make a new post with the form data submitted
@@ -24,6 +23,7 @@ router.post('/', (req, res) => {
         title: req.body.title,
         body: req.body.body
     });
+    
     post.save().then(item => res.json(item));
 });
 

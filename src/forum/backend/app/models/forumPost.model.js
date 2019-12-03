@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let ForumPost = new Schema({
-    post_title: {
+let Post = new Schema({
+    title: {
         type: String
     },
-    post_description: {
+    body: {
         type: String
     }
 });
 
-module.exports = mongoose.model('Post', ForumPost);
+module.exports = mongoose.model('Post', Post);
