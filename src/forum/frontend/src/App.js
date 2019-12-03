@@ -1,17 +1,17 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AppNavbar from './components/AppNavbar';
-import TopicContainer from './components/TopicContainer'
 
-function App() {
+//Components
+
+import AppNavbar from './components/AppNavbar'
+
+
+export default function App() {
   return (
-    <div className="App">
-      <AppNavbar/>
-      <TopicContainer/>
-      
-    </div>
+      <div>
+        <AppNavbar/>
+      </div>
+
   );
 }
-
-export default App;

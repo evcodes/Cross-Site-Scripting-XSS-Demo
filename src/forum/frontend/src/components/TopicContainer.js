@@ -10,7 +10,6 @@ export default class TopicContainer extends Component{
                     <Topic title = "Exploits"/>
                     <Topic title = "Research"/>
                 </Row>
-         
             </Container>
         )
     }

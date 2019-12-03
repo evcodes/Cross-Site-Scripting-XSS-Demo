@@ -1,0 +1,8 @@
+.nav-text-style{
+    color:white;
+}
+
+.nav-text-style:hover{
+    color:green;
+    text-decoration: none;
+}

@@ -10,12 +10,11 @@ export default class Topic extends Component{
                         <CardTitle>
                             {this.props.title}
                         </CardTitle>
-                        <Button size = "sm" block href = "\${this.props.topic}">{this.props.topic} forums</Button>
+                        <Button size = "sm" block active>{this.props.topic} forums</Button>
                     </CardBody>
                 </Card>
                 <br/>
             </Col>
-           
         )
     }
 }
