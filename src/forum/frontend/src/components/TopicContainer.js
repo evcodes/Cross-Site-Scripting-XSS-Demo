@@ -6,7 +6,7 @@ export default class TopicContainer extends Component{
         return(
             <Container>
                 <Row>
-                    <Topic title = "News"/>
+                    <Topic title = "News" topic = "Security news"/>
                     <Topic title = "Exploits"/>
                     <Topic title = "Research"/>
                 </Row>
