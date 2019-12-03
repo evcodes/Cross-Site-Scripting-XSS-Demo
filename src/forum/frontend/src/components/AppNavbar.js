@@ -1,5 +1,4 @@
-import React, {Component, Fragment  } from 'react';
-
+import React, {Component } from 'react';
 import {NavItem,
         Collapse,
         Navbar,
@@ -10,7 +9,7 @@ import {NavItem,
         Container }
         from 'reactstrap';
 
-class AppNavbar extends Component {
+export default class AppNavbar extends Component {
     state = {
             isOpen:false
         }
@@ -42,5 +41,3 @@ class AppNavbar extends Component {
         </div>)
     }
 }
-
-export default AppNavbar;
