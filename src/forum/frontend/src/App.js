@@ -20,7 +20,7 @@ function App(){
           <Switch>
             <Route path = "/" component = {TopicContainer} exact/>
             <Route path = "/about" component = {About}/>
-            <Route path = "/Exploits" component = {TopicPage} props = {{topic: "Exploits" }}/>
+            <Route path = "/Exploits" render = {(props) => <TopicPage {...props}/>}/>
           </Switch>
         </Router>
       </div>

@@ -5,7 +5,7 @@ function TopicHome(props){
     return(
         <Container>
             <h1>
-                {this.props.topic}
+                {props.topic}
             </h1>
         </Container> 
     )
