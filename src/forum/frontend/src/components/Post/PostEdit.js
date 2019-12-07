@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class TopicEdit extends Component {
+class PostEdit extends Component {
     state = {  }
     render() { 
         return ( 
@@ -11,4 +11,4 @@ class TopicEdit extends Component {
     }
 }
  
-export default TopicEdit;
+export default PostEdit;

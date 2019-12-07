@@ -1,4 +1,12 @@
 import React from 'react';
-export default function About(){
-    return <h1>About page</h1>
+
+import {Container} from 'reactstrap'
+export default class About {
+    render(){
+        return( 
+            <Container>
+                <h1>About page</h1>
+            </Container>
+        )
+    }
 }

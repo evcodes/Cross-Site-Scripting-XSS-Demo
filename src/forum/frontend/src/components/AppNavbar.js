@@ -7,10 +7,10 @@ import {NavItem,
         Nav,
         Container }
         from 'reactstrap';
-        
+
 import {  NavLink } from 'react-router-dom';
 
-export default class AppNavbar extends Component {
+class AppNavbar extends Component {
     state = {
             isOpen:false
         }
@@ -24,18 +24,18 @@ export default class AppNavbar extends Component {
     render(){
         return(
             <div>
-                <Navbar color = 'dark' dark expand="sm" className = "mb-5">
+                <Navbar color = 'dark' dark expand='sm' className = 'mb-5'>
                     <Container>
                         <NavbarBrand>
-                            <NavLink to = "/">
+                            <NavLink to = '/' className = 'nav-text-style'>
                                 Hacker News
                             </NavLink>
                         </NavbarBrand>
                         <NavbarToggler onClick={this.toggle}/>
                         <Collapse isOpen = {this.state.isOpen} navbar>
-                            <Nav className = "ml-auto" navbar>
+                            <Nav className = 'ml-auto' navbar>
                                 <NavItem>
-                                    <NavLink to = "/about" >
+                                    <NavLink to = '/about' className = 'nav-text-style'>
                                         About
                                     </NavLink>
                                 </NavItem>
@@ -47,3 +47,4 @@ export default class AppNavbar extends Component {
         )
     }
 }
+export default AppNavbar;

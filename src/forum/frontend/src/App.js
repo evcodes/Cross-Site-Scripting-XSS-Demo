@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -7,12 +7,12 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //Components
 import AppNavbar from './components/AppNavbar'
-import TopicContainer from './components/TopicContainer'
-import TopicPage from './components/TopicPage'
-import TopicEdit from './components/TopicEdit'
+import TopicContainer from './components/Topic/TopicContainer'
+import TopicPage from './components/Topic/TopicHome'
+import TopicEdit from './components/Post/PostEdit'
 import About from './components/About'
 
-export default function App() {
+function App(){
   return (
       <div>
         <Router>
@@ -26,3 +26,4 @@ export default function App() {
       </div>
   );
 }
+export default App;
