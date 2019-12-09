@@ -8,8 +8,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 //Components
 import AppNavbar from './components/AppNavbar'
 import TopicContainer from './components/Topic/TopicContainer'
-import TopicPage from './components/Topic/TopicHome'
-import TopicEdit from './components/Post/PostEdit'
+import TopicHome from './components/Topic/TopicHome'
+
 import About from './components/About'
 
 function App(){
@@ -18,9 +18,13 @@ function App(){
         <Router>
           <AppNavbar/>
           <Switch>
-            <Route path = "/" component = {TopicContainer} exact/>
+            <Route exact path = "/" component = {TopicContainer}/>
             <Route path = "/about" component = {About}/>
-            <Route path = "/Exploits" render = {(props) => <TopicPage {...props}/>}/>
+            <Route path = "/News" render = {() => <TopicHome topic= "News"/>}/>
+            <Route path = "/Exploits" render = {() => <TopicHome topic= "Exploits"/>}/>
+            <Route path = "/Research" render = {() => <TopicHome topic= "Research"/>}/>
+            <Route path = "/Opportunities" render = {() => <TopicHome topic= "Opportunities"/>}/>
+      
           </Switch>
         </Router>
       </div>

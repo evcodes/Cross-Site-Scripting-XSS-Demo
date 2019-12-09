@@ -11,7 +11,7 @@ function TopicCard(props){
                     <CardTitle>
                         {props.title}
                     </CardTitle>
-                    <Link to ={props.title}>
+                    <Link topic = {props.title} to ={props.title}>
                         <Button size = 'sm' block active>{props.topic} forums</Button>
                     </Link>
                 </CardBody>
