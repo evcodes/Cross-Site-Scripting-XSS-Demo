@@ -9,11 +9,15 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppNavbar from './components/AppNavbar'
 import TopicContainer from './components/Topic/TopicContainer'
 import TopicHome from './components/Topic/TopicHome'
-
 import About from './components/About'
+
+//Redux Dependencies
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App(){
   return (
+    <Provider store = {store}>
       <div>
         <Router>
           <AppNavbar/>
@@ -28,6 +32,7 @@ function App(){
           </Switch>
         </Router>
       </div>
+    </Provider>
   );
 }
 export default App;
