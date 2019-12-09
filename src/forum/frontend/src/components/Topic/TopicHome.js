@@ -3,8 +3,11 @@ import {Container, Row, Col,Button, ListGroup, ListGroupItem} from 'reactstrap';
 
 //connecting with redux
 import { connect } from 'react-redux';
-import { getPosts } from '../../actions/postActions';
+import { getPosts, deletePost} from '../../actions/postActions';
 import PropTypes from 'prop-types'
+
+//Modal for new post within a topic
+import  NewPost from '../Post/NewPost';
 
 class TopicHome extends Component{
 
@@ -12,6 +15,11 @@ class TopicHome extends Component{
         this.props.getPosts();
     }
 
+    onDeleteClick = (id) => {
+        this.props.deletePost(id)
+    }
+
+ 
     render(){
         const { posts } = this.props.post;
         
@@ -26,15 +34,14 @@ class TopicHome extends Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Button color = "success">
-                            Write a new article
-                        </Button>
+                        <NewPost/>
                     </Col>
                 </Row>
                 <ListGroup>
-                    {posts.map(({_id, title})=>
+                    {posts.map(({id, title})=> 
                         <ListGroupItem>
                             <h1>{title}</h1>
+                            <Button color = "failure" onClick = {this.onDeleteClick.bind(this,id)}>Remove Post</Button>
                         </ListGroupItem>
                     )}
                 </ListGroup>
@@ -45,10 +52,11 @@ class TopicHome extends Component{
 
 TopicHome.propTypes = {
     getPosts: PropTypes.func.isRequired,
+    deletePost:PropTypes.func.isRequired,
     post:PropTypes.object.isRequired
 }
 const mapStateToProps = (state) => ({
     post: state.post
 })
 
-export default connect(mapStateToProps, {getPosts})(TopicHome);
+export default connect(mapStateToProps, {getPosts, deletePost})(TopicHome);
