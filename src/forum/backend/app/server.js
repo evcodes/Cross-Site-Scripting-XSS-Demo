@@ -6,6 +6,10 @@ const db = require('./config/db').url;
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json());
 

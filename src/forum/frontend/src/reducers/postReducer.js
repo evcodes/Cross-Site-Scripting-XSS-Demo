@@ -1,19 +1,22 @@
-import uuid from 'uuid';
-import {GET_POSTS, ADD_POST, DELETE_POST } from '../actions/types'
+import {GET_POSTS, ADD_POST, DELETE_POST, POSTS_LOADING, LOAD_POST } from '../actions/types'
 
 // handles all types of state changes to the posts
 // we must define action types
+//"id :uuid(), title: "<img onerror='alert(\"Hacked!\");' src='invalid-image' />""
 
 const initialState = {
-    posts : [
-        {id :uuid(), title: "<img onerror='alert(\"Hacked!\");' src='invalid-image' />"}
-    ]
-}
+    posts : [],
+    loading: false
+};
 
 export default function (state= initialState, action ){
     switch(action.type){
         case GET_POSTS:
-            return {...state}
+            return {
+                ...state, 
+                posts:action.payload,
+                loading:false
+            }
             
         case DELETE_POST:
             return{
@@ -25,6 +28,11 @@ export default function (state= initialState, action ){
                 return{
                     ...state,
                     posts: [action.payload, ...state.posts]
+            }
+        case LOAD_POST:
+            return {
+                ...state,
+                loading: true
             }
         default:
             return state;

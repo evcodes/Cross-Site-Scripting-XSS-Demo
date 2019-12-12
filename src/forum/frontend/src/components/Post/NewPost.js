@@ -4,9 +4,6 @@ import {Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input} fr
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/postActions';
 
-//temporarily here:
-import uuid from 'uuid';
-
 class NewPost extends Component{
      state = {
         modalIsOpen: false,
@@ -24,16 +21,19 @@ class NewPost extends Component{
         this.setState({[e.target.name]: e.target.value});
     }
 
-    onSubmit = (e) => {
+
+    onSubmit = e => {
         e.preventDefault();
-
+    
         const newPost = {
-            id: uuid(),
-            title : this.state.title,
-            body: this.state.body
-        }
-
+          title: this.state.title,
+          body: this.state.body
+        };
+    
+        // Add item via addPost action
         this.props.addPost(newPost);
+    
+        // Close modal
         this.toggle();
     }
 

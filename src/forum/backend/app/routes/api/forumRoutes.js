@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-// const auth = require('../../middleware/auth');
 
 let Post = require('../../models/forumPost.model');
 
@@ -26,5 +25,18 @@ router.post('/', (req, res) => {
     
     post.save().then(item => res.json(item));
 });
+
+// @route   GET api/forum/postID
+// @desc    Retrieve a post by ID
+// @access  Public
+router.get('/:id', (req, res) => {
+    Post.findById({_id : req.params.id})
+    .then(postFound => {
+        if (!postFound){
+            return( res.status(404).end())
+        }
+        return (res.status(200).json(postFound));
+    })
+})
 
 module.exports = router;

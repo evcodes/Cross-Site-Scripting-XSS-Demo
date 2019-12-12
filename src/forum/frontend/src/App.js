@@ -14,6 +14,7 @@ import About from './components/About'
 //Redux Dependencies
 import { Provider } from 'react-redux';
 import store from './store';
+import PostView from './components/Post/PostView';
 
 function App(){
   return (
@@ -24,11 +25,12 @@ function App(){
           <Switch>
             <Route exact path = "/" component = {TopicContainer}/>
             <Route exact path = "/about" component = {About}/>
-            <Route path = "/News" render = {() => <TopicHome topic= "News"/>}/>
+            <Route exact path = "/News" render = {() => <TopicHome topic= "News"/>}/>
+            <Route path = "/News/:id" render = {(props) => <PostView topic= "News" title = {props.title}/>}/>
             <Route path = "/Exploits" render = {() => <TopicHome topic= "Exploits"/>}/>
             <Route path = "/Research" render = {() => <TopicHome topic= "Research"/>}/>
             <Route path = "/Opportunities" render = {() => <TopicHome topic= "Opportunities"/>}/>
-      
+            <Route path = ""/>
           </Switch>
         </Router>
       </div>

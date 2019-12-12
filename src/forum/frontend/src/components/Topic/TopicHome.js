@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {Container, Row, Col, ListGroup, ListGroupItem} from 'reactstrap';
 
 //connecting with redux
@@ -6,9 +7,12 @@ import { connect } from 'react-redux';
 import { getPosts, deletePost} from '../../actions/postActions';
 import PropTypes from 'prop-types'
 
+// routing Topic Home to a single post
+
 //Modal for new post within a topic
 import  NewPost from '../Post/NewPost';
 
+import PostView from '../Post/PostView';
 class TopicHome extends Component{
 
     componentDidMount(){
@@ -22,10 +26,13 @@ class TopicHome extends Component{
     createMarkup (post){
         return {__html: post }
     }
+
+    loadPostView(PostID){
+        return (ReactDOM.render(<PostView id = {PostID} />))
+    }
     
     render(){
         const {posts} = this.props.post;
-    
         return(
             <Container>
                 <Row>
@@ -40,8 +47,15 @@ class TopicHome extends Component{
                         <NewPost/>
                     </Col>
                 </Row>
-                <ListGroup >
-                    <h1 dangerouslySetInnerHTML = {this.createMarkup(posts[0].title)}/>
+                <ListGroup>
+                {posts.map(({ _id, title, body }) => (
+                    <ListGroupItem key = {_id}>
+
+                        {/* dangerouslySetInnerHTML = {this.createMarkup(title)} */}
+                        <h1 onClick = {()=>this.loadPostView(_id)}>
+                            {title}
+                        </h1>
+                    </ListGroupItem>))}
                 </ListGroup>
             </Container> 
         )
