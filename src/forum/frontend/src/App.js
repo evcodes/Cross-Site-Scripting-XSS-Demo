@@ -23,7 +23,7 @@ function App(){
           <AppNavbar/>
           <Switch>
             <Route exact path = "/" component = {TopicContainer}/>
-            <Route path = "/about" component = {About}/>
+            <Route exact path = "/about" component = {About}/>
             <Route path = "/News" render = {() => <TopicHome topic= "News"/>}/>
             <Route path = "/Exploits" render = {() => <TopicHome topic= "Exploits"/>}/>
             <Route path = "/Research" render = {() => <TopicHome topic= "Research"/>}/>

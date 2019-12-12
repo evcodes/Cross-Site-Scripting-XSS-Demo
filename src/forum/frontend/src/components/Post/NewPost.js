@@ -76,7 +76,6 @@ class NewPost extends Component{
                             Submit post
                         </Button>
                         </Form>
-                        
                     </ModalBody>
                 </Modal>
             </div>

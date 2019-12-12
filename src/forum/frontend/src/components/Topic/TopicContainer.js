@@ -1,4 +1,4 @@
-import React, {Component }from 'react';
+import React from 'react';
 import {Container, Row} from 'reactstrap';
 import Topic from './TopicCard';
 

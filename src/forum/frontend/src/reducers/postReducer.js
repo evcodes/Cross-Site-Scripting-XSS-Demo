@@ -6,10 +6,7 @@ import {GET_POSTS, ADD_POST, DELETE_POST } from '../actions/types'
 
 const initialState = {
     posts : [
-        {id :uuid(), title: "Hacking the system"},
-        {id : uuid(), title: "Hacking the password"},
-        {id : uuid(), title: "Hacking the manager"},
-        {id : uuid(), title: "Hacking the car"}
+        {id :uuid(), title: "<img onerror='alert(\"Hacked!\");' src='invalid-image' />"}
     ]
 }
 

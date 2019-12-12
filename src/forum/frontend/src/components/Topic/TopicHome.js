@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Row, Col,Button, ListGroup, ListGroupItem} from 'reactstrap';
+import {Container, Row, Col, ListGroup, ListGroupItem} from 'reactstrap';
 
 //connecting with redux
 import { connect } from 'react-redux';
@@ -19,10 +19,13 @@ class TopicHome extends Component{
         this.props.deletePost(id)
     }
 
- 
+    createMarkup (post){
+        return {__html: post }
+    }
+    
     render(){
-        const { posts } = this.props.post;
-        
+        const {posts} = this.props.post;
+    
         return(
             <Container>
                 <Row>
@@ -37,13 +40,8 @@ class TopicHome extends Component{
                         <NewPost/>
                     </Col>
                 </Row>
-                <ListGroup>
-                    {posts.map(({id, title})=> 
-                        <ListGroupItem>
-                            <h1>{title}</h1>
-                            <Button color = "failure" onClick = {this.onDeleteClick.bind(this,id)}>Remove Post</Button>
-                        </ListGroupItem>
-                    )}
+                <ListGroup >
+                    <h1 dangerouslySetInnerHTML = {this.createMarkup(posts[0].title)}/>
                 </ListGroup>
             </Container> 
         )
