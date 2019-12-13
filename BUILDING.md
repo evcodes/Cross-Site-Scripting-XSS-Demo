@@ -7,7 +7,7 @@ for the frontend
 
 for the backend
 
-```cd src/forum/backend/```
+```cd src/forum/backend/app```
 ```npm install```
 
 And to write new content onto the database, contact eddy varela so he can make you a database user account. You will need to create a config/db.js file within the backend.
@@ -19,6 +19,12 @@ in backend/config/db.js
 module.exports= {
       url: "mongodb://user:password@dbname"
 }
+
+After this, you can navigate to backend/app 
+
+```npm run dev```
+
+to get the server and react site running.
 
 Without these credentials, you will not be able to read or write from the database.
 
