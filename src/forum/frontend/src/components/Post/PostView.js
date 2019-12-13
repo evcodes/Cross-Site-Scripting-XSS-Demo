@@ -43,19 +43,23 @@ class PostView extends Component {
     }
 
     //this function will rerender the body 
+    
     createMarkup (post){
         return {__html: post }
     }
-    
+
     render(){
         return(
             <Container>
                 <h1>{this.state.post["title"]}</h1>
+                {/* <p>{this.state.post["body"]}</p> */}
                 <p dangerouslySetInnerHTML = {this.createMarkup(this.state.post["body"])}/>
             </Container>
         )
     }
+
 }
+
 
 PostView.propTypes = {
     getPost:PropTypes.func.isRequired,
