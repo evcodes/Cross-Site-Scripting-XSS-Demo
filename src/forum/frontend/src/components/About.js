@@ -1,12 +1,13 @@
 import React from 'react';
-
 import {Container} from 'reactstrap'
-export default class About {
-    render(){
-        return( 
-            <Container>
-                <h1>About page</h1>
-            </Container>
-        )
-    }
+
+function About (){
+    return( 
+        <Container>
+            <h1>We're just some security newbs</h1>
+            <p>eddy and sean</p>
+        </Container>
+    )
 }
+
+export default About;

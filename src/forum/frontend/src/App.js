@@ -24,9 +24,9 @@ function App(){
           <AppNavbar/>
           <Switch>
             <Route exact path = "/" component = {TopicContainer}/>
-            <Route exact path = "/about" component = {About}/>
+            <Route exact path = "/About" component = {About}/>
             <Route exact path = "/News" render = {() => <TopicHome topic= "News"/>}/>
-            <Route path = "/News/:id" render = {(props) => <PostView topic= "News" title = {props.title}/>}/>
+            <Route path = "/News/:id" component = {PostView}/>
             <Route path = "/Exploits" render = {() => <TopicHome topic= "Exploits"/>}/>
             <Route path = "/Research" render = {() => <TopicHome topic= "Research"/>}/>
             <Route path = "/Opportunities" render = {() => <TopicHome topic= "Opportunities"/>}/>

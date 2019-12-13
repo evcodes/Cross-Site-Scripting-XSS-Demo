@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 
+/**
+ * 
+ * Given more time, I would restructure this to have a list of all the articles
+ * related to a particular topic, like subreddits.
+ *  
+ */
 class PostList extends Component{
     render(){
         return(

@@ -1,29 +1,58 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+
+//Reactstrap components for page
+import { Container } from 'reactstrap';
 
 //need to connect this application with redux */
 import { connect } from 'react-redux';
-import { getPost} from '../../actions/postActions';
+import { getPost } from '../../actions/postActions';
 import PropTypes from 'prop-types'
 
-class PostView extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {id: this.props.id};
-      }
+// axios for requests
+import axios from 'axios';
 
+/**
+ * 
+ * Renders an individual post from the id in the path
+ * Fetch request temporarily, eventually will work with axios.
+ * 
+ */
+
+class PostView extends Component {
+    state ={
+        id: null,
+        post: {
+            title: "",
+            body:""
+        }
+    }
 
     componentDidMount(){
-        this.props.getPost(this.state.id);
+        const { id } = this.props.match.params
+        this.state.id = id        
+        
+        axios.get(`http://localhost:5000/api/forum/${this.state.id}`)
+            .then(res => {
+            const fetchedPost = res.data;
+            console.log(fetchedPost)
+
+            this.setState({
+                post:fetchedPost
+            })
+        })
+    }
+
+    //this function will rerender the body 
+    createMarkup (post){
+        return {__html: post }
     }
     
     render(){
-        const {post} = this.props.post;
-
         return(
-            <div>
-                <h1>TEST</h1>
-                <p2>TEST BODY</p2>
-            </div>
+            <Container>
+                <h1>{this.state.post["title"]}</h1>
+                <p dangerouslySetInnerHTML = {this.createMarkup(this.state.post["body"])}/>
+            </Container>
         )
     }
 }

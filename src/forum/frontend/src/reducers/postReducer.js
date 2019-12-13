@@ -1,4 +1,4 @@
-import {GET_POSTS, ADD_POST, DELETE_POST, POSTS_LOADING, LOAD_POST } from '../actions/types'
+import {GET_POSTS, ADD_POST, DELETE_POST, POSTS_LOADING, LOAD_POST,GET_POST } from '../actions/types'
 
 // handles all types of state changes to the posts
 // we must define action types
@@ -6,6 +6,7 @@ import {GET_POSTS, ADD_POST, DELETE_POST, POSTS_LOADING, LOAD_POST } from '../ac
 
 const initialState = {
     posts : [],
+    post: null,
     loading: false
 };
 
@@ -22,6 +23,12 @@ export default function (state= initialState, action ){
             return{
                 ...state,
                 posts: state.posts.filter(post => post.id !== action.payload)
+            }
+
+        case GET_POST:
+            return{
+                ...state,
+                posts: state.posts.filter(post => post.id === action.payloads)
             }
 
         case ADD_POST:

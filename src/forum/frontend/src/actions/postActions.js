@@ -23,7 +23,7 @@ export const deletePost = id => {
 }
 
 //Get single post based on ID
-export const getPost = id => dispatch =>{
+export const getPost = id => dispatch => {
     axios.get(`/api/forum/${id}`).then(res => {
         dispatch({
             type:GET_POST,

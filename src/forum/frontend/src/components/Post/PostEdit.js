@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 
+/**
+ * 
+ * This file would allow content creators to edit their posts afterwards
+ * 
+ * */
 class PostEdit extends Component {
     state = {  }
     render() { 

@@ -4,6 +4,14 @@ import {Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input} fr
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/postActions';
 
+
+/**
+ * 
+ * If a user clicks on the "create new post button" on the Topic Home,
+ * Open a new modal with two fields with the title and body for a new post
+ * After the user has finished, submit the post onto the database
+ * 
+ */
 class NewPost extends Component{
      state = {
         modalIsOpen: false,
@@ -40,9 +48,7 @@ class NewPost extends Component{
     render(){
         return (
             <div>
-                <Button color = "success" onClick = {this.toggle}>
-                    Add Post
-                </Button>
+                <Button color = "success" onClick = {this.toggle}>Add Post</Button>
 
                 <Modal isOpen={this.state.modalIsOpen} toggle = {this.toggle}>
                     <ModalHeader toggle = {this.toggle}>
@@ -81,7 +87,6 @@ class NewPost extends Component{
             </div>
         )
     }
-
 }
 
 const mapStateToProps = (state) => ({
