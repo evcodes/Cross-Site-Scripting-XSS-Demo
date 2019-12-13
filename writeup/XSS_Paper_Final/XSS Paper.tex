@@ -43,7 +43,7 @@ The main focus of this paper is on stored XSS attacks. More generally, we will d
 
 \subsection{Cross Site Scripting Vulnerability}
 
-``Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites (OWASP)." The idea behind XSS exploits revolves around developers who do not constrain the kinds of input that can be submitted on various input forms. Data that is submitted to a site is stored somewhere on a database and then rendered at later time. For example, some input forms do not restrict users from inputting malicious JavaScript code that can be executed on another browser from the server. \\ 
+``Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites (OWASP)." The idea behind XSS exploits revolves around developers who do not constrain the kinds of input that can be submitted on various input forms. Data that is submitted to a site is stored somewhere on a database and then rendered at later time. For example, some input forms do not restrict users from inputting malicious JavaScript code that can be executed on another browser from the server.
 
 This trivial error has persisted as a huge vulnerability in various popular websites like MySpace, Twitter, and Facebook. In these sites, many attacks have been mounted where a malicious user can inject arbitrary JavaScript code into an application. Then, a non-suspecting user can have a different website experience or have their private information compromised. For example, suppose you had an application where people posted things for sale and the site developer did not sanitize the data that was being received. If some hacker realized this, they could potentially craft some JavaScript into the description of the object such that when a user looks at the object for sale, the hacker can gather the victim's session information (cookie that holds the data that identifies the user). The attacker is then able to impersonate this user since they have all the data that identifies that unique user.
 
@@ -126,7 +126,6 @@ No, in our experience, the attack is quite trivial. We purposely built a website
 
 \subsection{Attack Consequences}\\
 The consequence of XSS attacks can range from trivial unexpected behaviour on the target site to complete denial of service, or integrity issues, to complete access of a site. It is no surprise that this attack is one of the most popular types of web exploits (OWASP).
-
 \subsection{History of XSS Attacks}
 In the past, circa 2008, prominent social-networking sites like Twitter, Facebook, MySpace, YouTube and Orkut have been affected by XSS attacks. Since then, XSS vulnerabilities have surpassed buffer overflow vulnerabilities to become the most common publicly reported security vulnerability, with researchers estimating that as many as 68\% of websites are likely open to XSS attacks (MITRE). This attack has been deployed maliciously on the aforementioned sites to spam users, navigate them to pornographic sites, and steal sensitive information.
 
@@ -157,11 +156,11 @@ Components represent the basic building blocks in React and everything that is d
 
 This code snippet creates a React component by transpiling this code:\\
 
-\includegraphics[width = 9cm]{reactComponent.png}\\
+\includegraphics[width = 8cm]{reactComponent.png}\\
 
 Into ES6 JavaScript when the app is built:\\
 
-\includegraphics[width = 9cm]{jsx.png}\\
+\includegraphics[width = 8cm]{jsx.png}\\
 
 I want to direct our attention to the React.createElement() function because this is where we are going to lay the attack. This function takes in three parameters, the type of HTML tag that will be the root of DOM Tree, the props that are passed into the component, and the children which are also components. This recursive structure is built upon the tree like structure of the Document Object Model (DOM) underlying every webpage on the internet.\\
 
@@ -202,7 +201,7 @@ As described in the Security Audit section, the severity of this attack is extre
 \section{Countermeasures:}
 
 As for countermeasures, there are many best practices to follow to decrease the likelihood of a XSS attack. The underlying tenet of these preventative measures is skepticism. As a developer you must believe that all data not produced by you is malicious. Anything that comes from outside one's system like form data, query strings, cookies, request headers, etc should not be rendered on a webpage. Many developers forget this and allow different forms of attacks like SQL injections, XSS, and other malicious user input attacks.\\
-Many language designers have baked in character escaping such that scripts get rendered out as plaintext. For example, the React framework we used to build HackerNews has character escaping whenever it encounters angle brackets like <script>, <h1>, etc. However, as we have shown there are still instances where developers use dangerous methods like dangerouslySetInnerHTML. Although this method has an alarmingly insecure name, developers may not know why it’s dangerous. Therefore, as developers, we must be cautious of the kind vulnerabilities that we can introduce into the apps we build. A good countermeasure is to be informed of existing vulnerabilities.
+Many language designers have baked in character escaping such that scripts get rendered out as plaintext. For example, the React framework we used to build HackerNews has character escaping whenever it encounters angle brackets like $<$script$>$, $<$h1$>$, etc. However, as we have shown there are still instances where developers use dangerous methods like dangerouslySetInnerHTML. Although this method has an alarmingly insecure name, developers may not know why it’s dangerous. Therefore, as developers, we must be cautious of the kind vulnerabilities that we can introduce into the apps we build. A good countermeasure is to be informed of existing vulnerabilities.
 
 \subsection{Sanitizing inputs}
 
@@ -210,7 +209,7 @@ Although it may see like sanitizing inputs is simple enough, there are many tech
 
 \subsubsection{Whitelisting}\\
 
-As a countermeasure for malicious user input, developers can either whitelist or blacklist the content that is being received. Whitelisting is the process of describing everything that is understood to be non-malicious and allowing this type of content to get stored in the app. On the other hand, blacklisting refers to identifying malicious kinds of input and rejecting this data from our application. The challenge with this approach is that some sites allow users to submit HTML and JavaScript. It is difficult to write an algorithm that prevents any kind of malicious input and handle encoded data. Therefore, many prefer whitelisting as it is easier to decide what is non-harmful.\\ 
+As a countermeasure for malicious user input, developers can either whitelist or blacklist the content that is being received. Whitelisting is the process of describing everything that is understood to be non-malicious and allowing this type of content to get stored in the app. On the other hand, blacklisting refers to identifying malicious kinds of input and rejecting this data from our application. The challenge with blacklisting is that some sites allow users to submit HTML and JavaScript. It is difficult to write an algorithm that prevents any kind of malicious input and handles encoded data when the site allows users to submit HTML. Therefore, many prefer whitelisting as it is easier to decide what is non-harmful.\\ 
 \subsubsection {Form Validation}
 Developers can type check the data that they are receiving. For example, if a developer expects a user to enter their height, they should not be submitting a script or text into this field. This is a fairly simple countermeasure but can go a long way.\\
 \subsubsection{Layered approach}
